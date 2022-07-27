@@ -1,0 +1,145 @@
+$border-radius: 20px;
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+:root {
+  margin: 30vh auto;
+  text-align: center;
+}
+#result {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  .column1 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    width: 60%;
+    background-color: rgba(255, 0, 0, 0.986);
+    border-top-left-radius: $border-radius;
+    border-top-right-radius: $border-radius;
+    text-align: center;
+
+    img {
+      width: 200px;
+    }
+    .column2 {
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
+      width: 100%;
+      padding: 20px;
+      .type {
+        font-size: 20px;
+        font-weight: bold;
+        color: #fff;
+
+        ul {
+          list-style: none;
+          display: flex;
+          align-items: center;
+          justify-content: space-around;
+          width: 100%;
+          li {
+            width: 100%;
+            padding: 10px;
+          }
+        }
+      }
+    }
+  }
+}
+
+//diparate
+$color-back: #efefef;
+$color-bar: #0bf;
+
+.avatar-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  flex-wrap: wrap;
+  border-radius: 50%;
+  height: 130px;
+  width: 130px;
+  padding: 0;
+  margin: 0 1rem;
+  border: none;
+  background: $color-back;
+
+  .avatar {
+    margin: 15px;
+    border-radius: 50%;
+    width: 100px;
+
+    img {
+      width: 100%;
+      height: auto;
+    }
+  }
+
+  .info {
+    display: none;
+    font-weight: bold;
+    font-size: 2rem;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba($color-bar, 0.2);
+    color: white;
+    z-index: 1000;
+
+    &.js-active {
+      display: table;
+    }
+
+    .info-inner {
+      display: table-cell;
+      text-align: center;
+      vertical-align: middle;
+    }
+  }
+}
+
+/**
+* Function to generate procentual progress classes 
+* .p-1 1% -> p-100 100%
+**/
+$step: 1;
+$loops: round(100 / $step);
+$increment: 360 / $loops;
+$half: round($loops / 2);
+
+@for $i from 1 through $loops {
+  .p-#{$i*$step} {
+    @if $i < $half {
+      $nextdeg: 90deg + ($increment * $i);
+
+      background-image: linear-gradient(
+          90deg,
+          $color-back 50%,
+          transparent 50%,
+          transparent
+        ),
+        linear-gradient($nextdeg, $color-bar 50%, $color-back 50%, $color-back);
+    } @else {
+      $nextdeg: -90deg + ($increment * ($i - $half));
+
+      background-image: linear-gradient(
+          $nextdeg,
+          $color-bar 50%,
+          transparent 50%,
+          transparent
+        ),
+        linear-gradient(270deg, $color-bar 50%, $color-back 50%, $color-back);
+    }
+  }
+}

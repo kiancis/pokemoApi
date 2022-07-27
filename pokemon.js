@@ -19,9 +19,6 @@ function submit() {
       });
       const height = data.height;
       const weight = data.weight;
-      const stats = data.stats.map((element) => {
-        return element.stat.name + ": " + element.base_stat;
-      });
       const moves = data.moves.map((element) => {
         return element.move.name;
       });
@@ -34,29 +31,42 @@ function submit() {
               <h1>${name}</h1>
                 <br>
                 <div class="img"><img src="${image}" alt="pokeImage"></div>
+                <div class="column2">
+                <h2>Altura: ${height}</h2>
+                    <div class="type">
+                      <ul>
+                        ${types.map((type) => `<li>${type}</li>`).join("")}
+                        </ul>
+                    </div>
+                      <h2>Peso: ${weight}</h2>
+                </div>
           </div>
             <br>
-            <div class="column2">
-                <h2>Tipos</h2>
-                <ul>
-                  ${types.map((type) => `<li>${type}</li>`).join("")}
-                  </ul>
-                  <h2>Altura: ${height}</h2>
-                  <h2>Peso: ${weight}</h2>
+            <h2>Stats</h2>
+            <div class="avatar-container p-${data.stats[0].base_stat}">
+            <img src="https://s3.amazonaws.com/uifaces/faces/twitter/_shahedk/128.jpg" alt="" class="avatar"/>
+          </div><!--.avatar-container-->
+          
+          <div class="avatar-container p-${data.stats[1].base_stat}">
+            <img src="https://s3.amazonaws.com/uifaces/faces/twitter/mattchevy/128.jpg" alt="" class="avatar"/>
+          </div><!--.avatar-container-->
+          
+          <div class="avatar-container p-${data.stats[2].base_stat}">
+            <img src="https://s3.amazonaws.com/uifaces/faces/twitter/soffes/128.jpg" alt="" class="avatar"/>
+          </div><!--.avatar-container-->
             </div>
-              <div class="column3">
-                  <div class="stats">
-                  <h2>Stats</h2>
-                      <ul>
-                        ${stats.map((stat) => `<li>${stat}</li>`).join("")}
-                        </ul>
-                  </div>
-                    <div class="moves">
-                        <h2>Movimientos</h2>
-                        <ul>
-                            ${moves.map((move) => `<li>${move}</li>`).join("")}
-                          </ul>
-                    </div>
+          <div class="avatar-container p-${data.stats[3].base_stat}">
+            <img src="https://s3.amazonaws.com/uifaces/faces/twitter/soffes/128.jpg" alt="" class="avatar"/>
+          </div><!--.avatar-container-->
+            </div>
+          <div class="avatar-container p-${data.stats[4].base_stat}">
+            <img src="https://s3.amazonaws.com/uifaces/faces/twitter/soffes/128.jpg" alt="" class="avatar"/>
+          </div><!--.avatar-container-->
+            </div>
+          <div class="avatar-container p-${data.stats[5].base_stat}">
+            <img src="https://s3.amazonaws.com/uifaces/faces/twitter/soffes/128.jpg" alt="" class="avatar"/>
+          </div><!--.avatar-container-->
+            </div>               
               </div>
       </div>`;
     })
